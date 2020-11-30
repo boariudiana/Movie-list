@@ -6,12 +6,11 @@ import CardMedia from '@material-ui/core/CardMedia';
 import styles from './SavedMovies.module.css'
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
-import StarIcon from '@material-ui/icons/Star';
-import IconButton from '@material-ui/core/IconButton';
 import CardHeader from '@material-ui/core/CardHeader';
 import Avatar from '@material-ui/core/Avatar';
 import { red } from "@material-ui/core/colors";
 import { makeStyles } from "@material-ui/core/styles";
+import MovieReview from '../MovieReview/MovieReview'
 
 const useStyles = makeStyles((theme) => ({
   
@@ -22,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 const MovieItem = (props) => {
+  
   const classes = useStyles();
   const movie = props.movie
   const imgUrl = `https://image.tmdb.org/t/p/w300${movie.poster_path}`
@@ -54,15 +54,8 @@ const MovieItem = (props) => {
       >
         Delete
       </Button>
-        <IconButton aria-label="share">
-        <span>
-        <StarIcon />
-        <StarIcon />
-        <StarIcon />
-        <StarIcon />
-        <StarIcon />
-      </span>
-        </IconButton>
+      <MovieReview 
+      movie = {movie}/>
       </CardActions>
     </Card>  
     </li>
