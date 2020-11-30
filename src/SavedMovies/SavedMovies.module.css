@@ -1,0 +1,34 @@
+.movie_item{
+    list-style: none;
+    margin-top : 16px;
+    min-width: 345px;
+
+}
+.container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.root{
+    max-width: 500px;
+}
+.media{
+    height: 140px;
+}
+.avatar{
+    background-color: #f44336;
+}
+.cardActions{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  @media(max-width : 400px){
+      .root{
+          max-width: 300px;
+      }
+      .container{
+          min-width: 300px;
+      }
+  }

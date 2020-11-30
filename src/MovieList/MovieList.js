@@ -10,7 +10,7 @@ import styles from "./MovieList.module.css"
 
 const MovieList = (props) => {
     return (
-      <div>
+      <div className = {styles.box}>
         <ul className={styles.list}>
           {props.movies.map((movie) => (
             <Paper>
