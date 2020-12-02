@@ -1,44 +1,38 @@
-import React, { useState } from "react"
-import StarIcon from '@material-ui/icons/Star';
-import IconButton from '@material-ui/core/IconButton';
-import { yellow } from '@material-ui/core/colors';
-
-const MovieReview = (props) => {
-   
-    const[reviewState, setReview] = useState({
-        review:-1
-    })
-    const starArr =[1, 2, 3, 4, 5]
-    
-    const reviewHandler = (index)=>{
-         setReview({
-             review : index
-         }) 
+import React from "react";
+import IconButton from "@material-ui/core/IconButton";
+import StarIcons from "../Star/StarIcons"
+class  MovieReview extends React.Component {
+  constructor(props) {
+    super(props)
+    const review = JSON.parse(window.localStorage.getItem(props.movie.id))
+    if (review && review !== null) {
+      this.state = {
+       review,
+      }
+    } else {
+      this.state = {
+       review :-1
+      }
     }
-    let starIcons=starArr.map((item, index)=>{
-        if(index<=reviewState.review ){
-            return(
-                <StarIcon
-                onClick= {()=>reviewHandler(index)}
-                key = {index}
-                style={{ color: yellow[500] }}/>
-            )
-         }
-         return(
-            <StarIcon
-            onClick= {()=>reviewHandler(index)}
-            key = {index}
-           color ="disabled"/>
-         )
-    })
+  }
 
+   reviewHandler = (value) => {
+    this.setState({ review: value }, () => {
+      window.localStorage.setItem(
+        this.props.movie.id,
+        JSON.stringify(this.state.review),
+      )
+    },);
+  };
 
-   return(
+  
+ render(){
+  return (
     <IconButton aria-label="review">
-    <span>
-    {starIcons}
-  </span>
+      <span><StarIcons
+         review = {this.state.review}
+         handler = {this.reviewHandler}/></span>
     </IconButton>
-   )
+  )}
 }
-export default MovieReview
+export default MovieReview;

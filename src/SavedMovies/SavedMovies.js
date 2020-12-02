@@ -1,4 +1,4 @@
-import React from 'react'
+import React  from 'react'
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -21,10 +21,11 @@ const useStyles = makeStyles((theme) => ({
 
 
 const MovieItem = (props) => {
-  
+
   const classes = useStyles();
   const movie = props.movie
   const imgUrl = `https://image.tmdb.org/t/p/w300${movie.poster_path}`
+
   return (
     <li className={styles.movie_item}>
        <Card className={styles.root}>
@@ -54,8 +55,8 @@ const MovieItem = (props) => {
       >
         Delete
       </Button>
-      <MovieReview 
-      movie = {movie}/>
+      <MovieReview
+       movie = {movie}/>
       </CardActions>
     </Card>  
     </li>
@@ -68,7 +69,8 @@ const MovieItem = (props) => {
       {props.savedMovies && props.savedMovies.length > 0 ? (
         <ul className = {styles.container}>
           {props.savedMovies.map((movie) => (
-            <MovieItem movie={movie} />
+            <MovieItem movie={movie}
+                    key = {movie.id} />
           ))}
         </ul>
       ) : (
