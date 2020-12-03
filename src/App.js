@@ -23,17 +23,29 @@ class App extends React.Component {
 
 handleAddMovie = (movie)=>{
   const movies = this.state.movies
-  this.setState(
-    {
-      movies: [...movies, movie],
-    },
-    () => {
-      window.localStorage.setItem(
-        'saved-movies',
-        JSON.stringify(this.state.movies),
-      )
-    },
-  )
+ 
+    this.setState(
+      {
+        movies: [...movies, movie],
+      },
+      () => {
+        window.localStorage.setItem(
+          'saved-movies',
+          JSON.stringify(this.state.movies),
+        )
+      },
+    )
+  }
+  
+handleDeleteMovie = (id) => {
+  this.setState ({
+    movies: this.state.movies.filter (item => (item.id !== id))
+  },  () => {
+    window.localStorage.setItem(
+      'saved-movies',
+      JSON.stringify(this.state.movies),
+    )
+  },)
 }
 
   render() {
@@ -41,7 +53,10 @@ handleAddMovie = (movie)=>{
       <div className="App">
         <Header />
         <SearchBox  onMovieAdd={this.handleAddMovie}/>
-        <SavedMovies savedMovies={this.state.movies} />
+        <SavedMovies 
+              savedMovies={this.state.movies}
+              onMovieDelete={this.handleDeleteMovie}
+         />
       </div>
     )
   }
