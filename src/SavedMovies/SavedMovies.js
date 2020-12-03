@@ -10,7 +10,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import Avatar from '@material-ui/core/Avatar';
 import { red } from "@material-ui/core/colors";
 import { makeStyles } from "@material-ui/core/styles";
-import MovieReview from '../MovieReview/MovieReview'
+import MovieRaiting from '../MovieRaiting/MovieRaiting'
 
 const useStyles = makeStyles((theme) => ({
   
@@ -52,10 +52,11 @@ const MovieItem = (props) => {
         color="secondary"
         className={classes.button}
         startIcon={<DeleteIcon />}
+        onClick={() => props.onMovieDelete(movie.id)}
       >
         Delete
       </Button>
-      <MovieReview
+      <MovieRaiting
        movie = {movie}/>
       </CardActions>
     </Card>  
@@ -70,7 +71,8 @@ const MovieItem = (props) => {
         <ul className = {styles.container}>
           {props.savedMovies.map((movie) => (
             <MovieItem movie={movie}
-                    key = {movie.id} />
+                    key = {movie.id}
+                    onMovieDelete={props.onMovieDelete} />
           ))}
         </ul>
       ) : (
