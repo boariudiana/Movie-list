@@ -1,17 +1,19 @@
 .movie_item{
     list-style: none;
-    margin-top : 16px;
+    margin-top: 16px;
     min-width: 345px;
 
 }
 .container{
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }
 .root{
     max-width: 500px;
+    margin-right: 16px;
 }
 .media{
     height: 140px;

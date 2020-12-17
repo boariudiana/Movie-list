@@ -22,6 +22,10 @@ class App extends React.Component {
   }
 
 handleAddMovie = (movie)=>{
+  const dublicateMovie = this.state.movies.filter(item => (item.id === movie.id)).length > 0;
+  if (dublicateMovie === true) {
+    return;
+  }
   const movies = this.state.movies
  
     this.setState(
@@ -45,10 +49,20 @@ handleDeleteMovie = (id) => {
       'saved-movies',
       JSON.stringify(this.state.movies),
     )
+    window.localStorage.setItem(
+      id,
+      JSON.stringify([{ id: 0, active: false, raited:false },
+        { id: 1, active: false, raited:false },
+        { id: 2, active: false, raited:false },
+        { id: 3, active: false, raited:false },
+        { id: 4, active: false, raited:false },]),
+    )
   },)
 }
 
   render() {
+
+  
     return (
       <div className="App">
         <Header />

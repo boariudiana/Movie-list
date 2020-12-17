@@ -70,7 +70,8 @@ const MovieItem = (props) => {
       {props.savedMovies && props.savedMovies.length > 0 ? (
         <ul className = {styles.container}>
           {props.savedMovies.map((movie) => (
-            <MovieItem movie={movie}
+            <MovieItem 
+                    movie={movie}
                     key = {movie.id}
                     onMovieDelete={props.onMovieDelete} />
           ))}

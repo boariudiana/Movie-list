@@ -4,6 +4,7 @@ import { searchMovies } from '../shared/API';
 import styles from './SearchBox.module.css';
 import MovieList from "../MovieList/MovieList"
 
+
 const SearchBox = (props) => {
   const [term, setTerm] = useState('');
   const [movies, setMovies] = useState([]);
@@ -38,7 +39,8 @@ const SearchBox = (props) => {
       >
         Search
       </Button>
-      <MovieList movies={movies} onMovieAdd={localMovieAdd} />
+      <MovieList movies={movies}
+           onMovieAdd={localMovieAdd} />
     </div>
   );
 };

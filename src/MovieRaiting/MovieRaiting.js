@@ -1,53 +1,83 @@
-import React, {useState} from "react";
+import React, {Component} from "react";
 import StarIcon from '@material-ui/icons/StarOutlined'
 import styles from "./MovieRaiting.module.css"
 
-const  MovieRaiting = (props) => {
-  const handleMouseOver = (item) => {
-    // console.log(item)
-    // const index = ratings.findIndex((el) => el.id === item.id)
-    // const items = [...ratings]
-    // items[index].active = true
-    // setRatings(items)
-    const items = ratings.map((el, index) => {
+
+class   MovieRaiting extends Component {
+
+  constructor(props) {
+    super(props)
+    
+    const movieRating = JSON.parse(window.localStorage.getItem(this.props.movie.id))
+    if (movieRating && Array.isArray(movieRating)) {
+      this.state = {
+        rating : movieRating,
+      }
+    } else {
+      this.state = {
+        rating: [{ id: 0, active: false, raited:false },
+          { id: 1, active: false, raited:false },
+          { id: 2, active: false, raited:false },
+          { id: 3, active: false, raited:false },
+          { id: 4, active: false, raited:false },],
+      }
+    }
+
+      
+  }
+
+   handleMouseLeave = (item) => {
+    const items = this.state.rating.map((el, index) => {
+      return Object.assign({}, { ...el }, { active: false })
+    })
+    this.setState({rating:items})
+  }
+  
+   handleMouseOver = (item) => {
+    const items = this.state.rating.map((el, index) => {
       if (index < item.id) {
         return Object.assign({}, { ...el }, { active: true })
       }
       return Object.assign({}, { ...el }, { active: false })
     })
-    setRatings(items)
+    this.setState({rating:items})
   }
 
-  const handleClick = (item) =>{
-    const items = ratings.map((el, index) => {
+   handleClick = (item) =>{
+    const items = this.state.rating.map((el, index) => {
       if (index <= item.id) {
         return Object.assign({}, {...el}, {raited: true})
       }
       return Object.assign({}, {...el}, {raited :false})
     })
-    setRatings(items)
+    this.setState({rating:items}, () => {
+      window.localStorage.setItem(
+        this.props.movie.id,
+        JSON.stringify(this.state.rating),
+      )
+    })
+  
+  }
+  
+
+  
+  render(){
+    return (
+      <span>
+      {this.state.rating.map((item, index) => {
+        return (
+          <StarIcon
+            className={[styles.star, item.active && styles.active, item.raited && styles.raited].join(' ')}
+            onMouseOver={() => this.handleMouseOver(item)}
+            onMouseLeave={() => this.handleMouseLeave(item)}
+            onClick = {()=>{this.handleClick(item)}}
+            
+          />
+        )
+      })}
+    </span>
+    )
   }
 
-  const [ratings, setRatings] = useState([
-    { id: 0, active: false, raited:false },
-    { id: 1, active: false, raited:false },
-    { id: 2, active: false, raited:false },
-    { id: 3, active: false, raited:false },
-    { id: 4, active: false, raited:false },
-  ])
-
-  return (
-    <span>
-    {ratings.map((item, index) => {
-      return (
-        <StarIcon
-          className={[styles.star, item.active && styles.active, item.raited && styles.raited].join(' ')}
-          onMouseOver={() => handleMouseOver(item)}
-          onClick = {()=>{handleClick(item)}}
-        />
-      )
-    })}
-  </span>
-  )
 }
 export default MovieRaiting;
