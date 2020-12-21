@@ -3,6 +3,8 @@ import './App.css';
 import Header from './shared/Header'
 import SearchBox from './search/SearchBox'
 import SavedMovies from './SavedMovies/SavedMovies'
+import { ThemeProvider } from '@material-ui/core/styles';
+import theme from '../src/theme'
 
 
 class App extends React.Component {
@@ -22,10 +24,11 @@ class App extends React.Component {
   }
 
 handleAddMovie = (movie)=>{
-  const dublicateMovie = this.state.movies.filter(item => (item.id === movie.id)).length > 0;
-  if (dublicateMovie === true) {
-    return;
-  }
+  // const dublicateMovieCheck =this.state.movies.filter(item => (item.id === movie.id)).length > 0;
+  //   if(dublicateMovieCheck){
+  //     return;
+  //   }
+  
   const movies = this.state.movies
  
     this.setState(
@@ -61,17 +64,18 @@ handleDeleteMovie = (id) => {
 }
 
   render() {
-
   
     return (
+      <ThemeProvider theme={theme}>
       <div className="App">
         <Header />
-        <SearchBox  onMovieAdd={this.handleAddMovie}/>
+        <SearchBox onMovieAdd={this.handleAddMovie} />
         <SavedMovies 
               savedMovies={this.state.movies}
               onMovieDelete={this.handleDeleteMovie}
          />
       </div>
+      </ThemeProvider>
     )
   }
 }

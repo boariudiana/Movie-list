@@ -5,18 +5,22 @@
   
   .list {
     list-style: none;
-    width: 60%;
     align-items: center;
+    width: 60%;
   }
   
   .listItem {
-    height: 72px;
+    max-height: 250px;
     margin: 4px;
-    min-width: 600px;
+  }
+  .listItem img {
+    height: 200px;
+    padding: 10px 5px;
+    border-radius: 16px;
   }
   
-  .listItem img {
-    max-height: 72px;
+  .listItem :last-child{
+    padding :5px ;
   }
   
   .listItem .addMovie {
@@ -26,7 +30,13 @@
   .listItem:hover .addMovie {
     display: inline-flex;
   }
+  
   .listItem:hover {
       background-color: #F5F5F5;
   }
+   @media(max-width : 450px){
+     .list {
+       width: 100%;
+     }
+   }
   

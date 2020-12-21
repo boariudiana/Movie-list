@@ -66,7 +66,7 @@ const MovieItem = (props) => {
 
  const SavedMovies = (props) => {
   return (
-    <div>
+    <div className = {styles.movie_container}>
       {props.savedMovies && props.savedMovies.length > 0 ? (
         <ul className = {styles.container}>
           {props.savedMovies.map((movie) => (
