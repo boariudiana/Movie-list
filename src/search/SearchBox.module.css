@@ -1,3 +1,55 @@
-.main {
-  margin-top: 10px;
+
+ .main{
+  padding-left: 3%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  background-image: 
+  url('https://image.tmdb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,032541,01b4e4)/uozb2VeD87YmhoUP1RrGWfzuCrr.jpg');
+ }
+.search_container {
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    align-items: center;
+    justify-content: flex-start;
 }
+ .Input{
+    width:80%;
+    border:none;
+    outline: none;
+    padding: 12px;
+    border-radius: 18px;
+    background-color: #FFFFFF;
+    font-family: inherit;
+    margin-left: 5px;
+
+ }
+ 
+ .btn_grad {background-image: linear-gradient(to right, #77A1D3 0%, #79CBCA  51%, #77A1D3  100%)}
+  .btn_grad {
+     margin: 10px;
+     padding: 10px 12px;
+     text-align: center;
+     transition: 0.5s;
+     color: white;            
+     border-radius: 17px;
+     display: block;
+   }
+
+   .btn_grad:hover {
+     background-position: right center; /* change the direction of the change here */
+     color: #fff;
+     text-decoration: none;
+   }
+   @media(max-width : 800px) and (min-width :700px){
+       .btn_grad{
+           right: 52px
+       }
+   }
+   @media(max-width : 360px){
+     .main{
+       height: 250px;
+     }
+   }
+  
