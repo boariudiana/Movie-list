@@ -44,6 +44,15 @@
     .listItem img {
       max-height: 150px;
     }
+   }
 
+   .overview{
+     display: none;
+   }
+   
+   @media(min-width: 960px){
+      .overview{
+        display: block;
+      }
    }
   

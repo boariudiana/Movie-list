@@ -13,8 +13,9 @@ const MovieList = (props) => {
               <Grid container >
                 <Grid item md={4} xs={6} sm = {5} align = "left">
                   <img
-                    src={`https://image.tmdb.org/t/p/w154${movie.poster_path}`}
+                    src={movie.poster_path ?`https://image.tmdb.org/t/p/w154${movie.poster_path}`: 'movie_placeholder_big_2x.png'}
                     alt={movie.title}
+                    
                   />
                 </Grid>
                 <Grid   container item 
@@ -39,10 +40,11 @@ const MovieList = (props) => {
                     >
                       ({movie.release_date})
                       </Typography>
-                      {/*<Typography
-                        noWrap
+                      <Typography 
+                       noWrap
+                        className = {styles.overview}
                          variant = "body1"
-                      align= "left">{movie.overview}</Typography>*/}
+                         align= "left">{movie.overview}</Typography>
                   </Grid> 
                   <Grid item md={4} xs={4} sm = {4} lg = {3} xl = {2}>
                     <Button
