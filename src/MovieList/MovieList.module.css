@@ -10,18 +10,15 @@
   }
   
   .listItem {
-    max-height: 250px;
-    margin: 4px;
+    width:100%;
+    height: 200px;
+    margin-bottom: 16px;
   }
   .listItem img {
-    height: 200px;
-    padding: 10px 5px;
-    border-radius: 16px;
+    max-height: 200px;
+    border-radius: 3px;
   }
   
-  .listItem :last-child{
-    padding :5px ;
-  }
   
   .listItem .addMovie {
     display: none;
@@ -38,5 +35,15 @@
      .list {
        width: 100%;
      }
+   }
+
+   @media (min-width: 800px){
+    .listItem {
+      height: 150px;
+    }
+    .listItem img {
+      max-height: 150px;
+    }
+
    }
   
