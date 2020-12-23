@@ -44,7 +44,7 @@ const MovieItem = (props) => {
       <CardActionArea>
         <CardMedia
           className={styles.media}
-          image={imgUrl}
+          image={movie.poster_path ? imgUrl : 'movie_placeholder_big_2x.png'}
           title={movie.title}
         />
         
