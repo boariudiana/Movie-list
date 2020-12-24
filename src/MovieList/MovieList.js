@@ -13,7 +13,7 @@ const MovieList = (props) => {
               <Grid container >
                 <Grid item md={4} xs={6} sm = {5} align = "left">
                   <img
-                    src={movie.poster_path ?`https://image.tmdb.org/t/p/w154${movie.poster_path}`: 'movie_placeholder_big_2x.png'}
+                    src={movie.poster_path ?`https://image.tmdb.org/t/p/w154${movie.poster_path}`:  'movie_placeholder_big_2x.png'}
                     alt={movie.title}
                     
                   />
