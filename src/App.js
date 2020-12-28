@@ -8,6 +8,7 @@ import SearchBox from "./search/SearchBox";
 import SavedMovies from "./SavedMovies/SavedMovies";
 import { Route } from "react-router-dom";
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -23,11 +24,13 @@ class App extends React.Component {
     }
   }
 
+
   handleAddMovie = (movie) => {
-    const dublicateMovieCheck =this.state.movies.filter(item => (item.id === movie.id)).length > 0;
-      if(dublicateMovieCheck){
-        return;
-      }
+    const dublicateMovieCheck =
+      this.state.movies.filter((item) => item.id === movie.id).length > 0;
+    if (dublicateMovieCheck) {
+      return;
+    }
 
     const movies = this.state.movies;
 
@@ -77,15 +80,17 @@ class App extends React.Component {
             <Route
               path="/"
               exact
-              render={(props) => <SearchBox onMovieAdd={this.handleAddMovie}  />}
+              render={(props) =><SearchBox onMovieAdd={this.handleAddMovie} />}
             />
-             <Route
+            <Route
               path="/my-list"
               exact
-              render={(props) =>  <SavedMovies
-                savedMovies={this.state.movies}
-                onMovieDelete={this.handleDeleteMovie}
-              />}
+              render={(props) => (
+                <SavedMovies
+                  savedMovies={this.state.movies}
+                  onMovieDelete={this.handleDeleteMovie}
+                />
+              )}
             />
           </div>
         </ThemeProvider>
