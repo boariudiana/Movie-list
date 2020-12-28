@@ -9,6 +9,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { makeStyles } from '@material-ui/core/styles';
 import {Link} from 'react-router-dom'
+import Typography from '@material-ui/core/Typography'
 
 
 function a11yProps(index) {
@@ -44,7 +45,7 @@ const Header = () => {
       <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
-        <img src = "logo_movie.png" alt = "movie logo" width = "50px" height = '50px'/>
+        <Typography variant="h6">movie🎥List</Typography>
         <Tabs centered  value={value} onChange={handleChange}>
         <Tab label="Home" {...a11yProps(0)} value="/" component={Link} to="/" />
         <Tab label="My List"{...a11yProps(1)} value="/my-list" component={Link} to="/my-list" />

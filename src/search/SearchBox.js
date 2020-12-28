@@ -25,7 +25,7 @@ const SearchBox = (props) => {
     <div >
       <div className={styles.main}>
         <div >
-        <WhiteTextTypography variant="h2" align = "left">Wellcome.</WhiteTextTypography>
+        <WhiteTextTypography variant="h2" align = "left">Welcome.</WhiteTextTypography>
         <WhiteTextTypography variant="h5" align = "left">Millions of movies, TV shows and people to discover. Explore now</WhiteTextTypography>
         </div>
         <div className = {styles.search_container}>

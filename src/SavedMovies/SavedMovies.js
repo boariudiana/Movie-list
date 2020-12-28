@@ -42,7 +42,7 @@ const MovieItem = (props) => {
             <CardMedia
               className={styles.media}
               image={
-                movie.poster_path ? imgUrl : "movie_placeholder_big_2x.png"
+                movie.poster_path ? imgUrl : 'https://i.imgur.com/Z2MYNbj.png/large_movie_poster.png'
               }
               title={movie.title}
             />
