@@ -11,7 +11,7 @@ import Avatar from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
 import MovieRaiting from "../MovieRaiting/MovieRaiting";
 import Grid from "@material-ui/core/Grid";
-import { useMediaQuery } from "@material-ui/core";
+import { Typography, useMediaQuery } from "@material-ui/core";
 import theme from "../../src/theme";
 
 const useStyles = makeStyles((theme) => ({
@@ -89,7 +89,10 @@ const SavedMovies = (props) => {
           </Grid>
         </ul>
       ) : (
-        "No saved movies"
+        <Typography
+           variant= "h6"
+           color = "initial"
+            >No saved movies</Typography>
       )}
     </div>
   );
