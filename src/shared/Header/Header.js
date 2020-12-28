@@ -5,51 +5,42 @@ import {
   IconButton,
 } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import { makeStyles } from '@material-ui/core/styles';
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import Typography from '@material-ui/core/Typography'
-
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
-}
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-  },
-  menuButton: {
-    marginRight: theme.spacing(3),
-  },
-}));
+import styles from './Header.module.css'
 
 
 const Header = () => {
-  const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
   return (
     <div >
        <AppBar position="static">
       <Toolbar>
-      <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+      <IconButton edge="start" color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
-        <Typography variant="h6">movie🎥List</Typography>
-        <Tabs centered  value={value} onChange={handleChange}>
-        <Tab label="Home" {...a11yProps(0)} value="/" component={Link} to="/" />
-        <Tab label="My List"{...a11yProps(1)} value="/my-list" component={Link} to="/my-list" />
-        </Tabs>
+        <Typography variant="h6">🎥</Typography>
+        <ul className = {styles.ul}>
+          <li className = {styles.links}>
+            <NavLink 
+              to = "/"
+              exact
+              activeStyle = {{
+                textDecoration : 'underline'
+          
+              }}>
+            <Typography variant = "h6">Home</Typography>
+            </NavLink>
+          </li>
+          <li className = {styles.links}>
+          <NavLink 
+            to = "/my-list"
+              activeStyle = {{
+                textDecoration : 'underline'
+              }} >
+            <Typography variant = "h6">My List</Typography>
+            </NavLink>
+          </li>
+        </ul>
       </Toolbar>
     </AppBar>
     </div>
