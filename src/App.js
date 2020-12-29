@@ -7,6 +7,8 @@ import { BrowserRouter } from "react-router-dom";
 import SearchBox from "./search/SearchBox";
 import SavedMovies from "./SavedMovies/SavedMovies";
 import { Route } from "react-router-dom";
+import { Fragment } from "react";
+import PopularMovies from "./PopularMovies/PopularMovies";
 
 
 class App extends React.Component {
@@ -80,7 +82,10 @@ class App extends React.Component {
             <Route
               path="/"
               exact
-              render={(props) =><SearchBox onMovieAdd={this.handleAddMovie} />}
+              render={(props) =>(<Fragment>
+                      <SearchBox onMovieAdd={this.handleAddMovie} />
+                      <PopularMovies />
+              </Fragment>)}
             />
             <Route
               path="/my-list"
