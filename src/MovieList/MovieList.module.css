@@ -18,19 +18,23 @@
     height: 200px;
     border-radius: 3px;
   }
-  
-  
+
   .listItem .addMovie {
-    display: none;
+    display: inline-flex;
   }
-  
+
+  @media(hover: hover) and (pointer: fine){
+    .listItem .addMovie {
+      display: none;
+    }
+    .listItem:hover{
+      background-color: #F5F5F5;
+  }
   .listItem:hover .addMovie {
     display: inline-flex;
   }
-  
-  .listItem:hover {
-      background-color: #F5F5F5;
   }
+  
    @media(max-width : 450px){
      .list {
        width: 100%;
