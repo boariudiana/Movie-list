@@ -17,7 +17,7 @@ const Header = () => {
           <ul className={styles.ul}>
             <li className={styles.links}>
               <NavLink
-                to="/"
+                to="/home"
                 exact
                 activeStyle={{
                 textDecoration: "underline",

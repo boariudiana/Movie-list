@@ -1,4 +1,4 @@
-import { React, useEffect, useState, Fragment } from "react";
+import { React, useEffect, useState, } from "react";
 import { popularMovies } from "../shared/API";
 import { makeStyles } from "@material-ui/core/styles";
 import GridList from "@material-ui/core/GridList";
@@ -7,6 +7,7 @@ import GridListTileBar from "@material-ui/core/GridListTileBar";
 import Typography from "@material-ui/core/Typography";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import theme from "../../src/theme";
+import styles from "./PopularMovies.module.css"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,7 +39,7 @@ const PopularMovies = () => {
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
 
   return (
-    <Fragment>
+    <div className = {styles.layout}>
       <Typography variant="h6" color="primary" align="left">
         Most popular movies
       </Typography>
@@ -60,7 +61,7 @@ const PopularMovies = () => {
           ))}
         </GridList>
       </div>
-    </Fragment>
+    </div>
   );
 };
 

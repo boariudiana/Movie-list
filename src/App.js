@@ -3,15 +3,15 @@ import "./App.css";
 import Header from "./shared/Header/Header";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../src/theme";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Switch } from "react-router-dom";
 import SearchBox from "./search/SearchBox";
 import SavedMovies from "./SavedMovies/SavedMovies";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import { Fragment } from "react";
 import PopularMovies from "./PopularMovies/PopularMovies";
 
 
-class App extends React.Component {
+class App extends React.Component {git
   constructor(props) {
     super(props);
     const movies = JSON.parse(window.localStorage.getItem("saved-movies"));
@@ -26,16 +26,14 @@ class App extends React.Component {
     }
   }
 
-
   handleAddMovie = (movie) => {
     const dublicateMovieCheck =
       this.state.movies.filter((item) => item.id === movie.id).length > 0;
     if (dublicateMovieCheck) {
       return;
     }
-
     const movies = this.state.movies;
-
+  
     this.setState(
       {
         movies: [...movies, movie],
@@ -50,6 +48,7 @@ class App extends React.Component {
   };
 
   handleDeleteMovie = (id) => {
+    const movies = this.state.movies;
     this.setState(
       {
         movies: this.state.movies.filter((item) => item.id !== id),
@@ -71,6 +70,7 @@ class App extends React.Component {
         );
       }
     );
+    this.dublicateMovieCheck(movies, id);
   };
 
   render() {
@@ -79,24 +79,35 @@ class App extends React.Component {
         <ThemeProvider theme={theme}>
           <div className="App">
             <Header />
-            <Route
-              path="/"
-              exact
-              render={(props) =>(<Fragment>
-                      <SearchBox onMovieAdd={this.handleAddMovie} />
-                      <PopularMovies />
-              </Fragment>)}
-            />
-            <Route
-              path="/my-list"
-              exact
-              render={(props) => (
-                <SavedMovies
-                  savedMovies={this.state.movies}
-                  onMovieDelete={this.handleDeleteMovie}
+            <Switch>
+              <Route
+                  exact
+                  path="/Movie-list"
+                  render={() => {
+                      return (
+                        <Redirect to="/home" /> 
+                      )
+                  }}
                 />
-              )}
-            />
+              <Route
+                path="/home"
+                exact
+                render={(props) =>(<Fragment>
+                        <SearchBox onMovieAdd={this.handleAddMovie} />
+                        <PopularMovies />
+                </Fragment>)}
+              />
+              <Route
+                path="/my-list"
+                exact
+                render={(props) => (
+                  <SavedMovies
+                    savedMovies={this.state.movies}
+                    onMovieDelete={this.handleDeleteMovie}
+                  />
+                )}
+              />
+            </Switch>
           </div>
         </ThemeProvider>
       </BrowserRouter>

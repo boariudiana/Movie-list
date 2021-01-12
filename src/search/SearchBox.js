@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState , useRef} from "react";
 import { searchMovies } from "../shared/API";
 import styles from "./SearchBox.module.css";
 import MovieList from "../MovieList/MovieList";
@@ -12,6 +12,12 @@ const WhiteTextTypography = withStyles({
 })(Typography);
 
 const SearchBox = (props) => {
+  const inputRef = useRef(null)
+  
+  useEffect(()=>{
+    inputRef.current.focus()
+  })
+
   const [term, setTerm] = useState("");
   const [movies, setMovies] = useState([]);
 
@@ -30,6 +36,7 @@ const SearchBox = (props) => {
         </div>
         <div className = {styles.search_container}>
         <input
+          ref = {inputRef}
           className={styles.Input}
           placeholder = "Search for a movie..."
           type="text"
@@ -54,7 +61,7 @@ const SearchBox = (props) => {
         </button>
         </div>
       </div>
-      <MovieList movies={movies} onMovieAdd={localMovieAdd}/>
+      <MovieList movies={movies} onMovieAdd={localMovieAdd} />
 
     </div>
   );
