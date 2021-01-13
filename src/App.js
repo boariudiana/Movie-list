@@ -9,6 +9,8 @@ import SavedMovies from "./SavedMovies/SavedMovies";
 import { Route, Redirect } from "react-router-dom";
 import { Fragment } from "react";
 import PopularMovies from "./PopularMovies/PopularMovies";
+import Snackbar from '@material-ui/core/Snackbar';
+import { Alert } from '@material-ui/lab';
 
 
 class App extends React.Component {
@@ -18,20 +20,32 @@ class App extends React.Component {
     if (movies && Array.isArray(movies)) {
       this.state = {
         movies,
+        open:false
       };
     } else {
       this.state = {
         movies: [],
+        open:false
       };
     }
   }
+
+   handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    this.setState({open:false});
+  };
   
   handleAddMovie = (movie) => {
+    
     const movies = this.state.movies;
   
     this.setState(
       {
         movies: [...movies, movie],
+        open : true,
       },
       () => {
         window.localStorage.setItem(
@@ -73,6 +87,11 @@ class App extends React.Component {
         <ThemeProvider theme={theme}>
           <div className="App">
             <Header />
+            <Snackbar open={this.state.open} autoHideDuration={6000} onClose={this.handleClose} anchorOrigin = {{ vertical: 'bottom', horizontal: 'left' }}>
+                           <Alert onClose={this.handleClose} severity="success">
+                               Movie added in My List!
+                           </Alert>
+            </Snackbar>
             <Switch>
               <Route
                   exact
@@ -88,7 +107,8 @@ class App extends React.Component {
                 exact
                 render={(props) =>(<Fragment>
                         <SearchBox onMovieAdd={this.handleAddMovie}
-                                    savedMovies = {this.state.movies}/>
+                                    savedMovies = {this.state.movies}
+                                    />
                         <PopularMovies />
                 </Fragment>)}
               />

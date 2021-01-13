@@ -5,6 +5,7 @@ import MovieList from "../MovieList/MovieList";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 
+
 const WhiteTextTypography = withStyles({
   root: {
     color: "#FFFFFF",
@@ -25,7 +26,6 @@ const SearchBox = (props) => {
     setMovies([]);
     props.onMovieAdd(movie);
   };
-
 
   return (
     <div >
