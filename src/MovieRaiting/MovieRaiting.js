@@ -67,6 +67,7 @@ class   MovieRaiting extends Component {
       {this.state.rating.map((item, index) => {
         return (
           <StarIcon
+            key = {index}
             className={[styles.star, item.active && styles.active, item.raited && styles.raited].join(' ')}
             onMouseOver={() => this.handleMouseOver(item)}
             onMouseLeave={() => this.handleMouseLeave(item)}

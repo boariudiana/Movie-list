@@ -61,7 +61,7 @@ const SearchBox = (props) => {
         </button>
         </div>
       </div>
-      <MovieList movies={movies} onMovieAdd={localMovieAdd} />
+      <MovieList movies={movies} onMovieAdd={localMovieAdd} savedMovies = {props.savedMovies}/>
 
     </div>
   );

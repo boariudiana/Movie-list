@@ -4,6 +4,7 @@ import AddIcon from "@material-ui/icons/Add";
 import styles from "./MovieList.module.css";
 
 const MovieList = (props) => {
+ 
   return (
     <div className={styles.box}>
       <ul className={styles.list}>
@@ -54,6 +55,7 @@ const MovieList = (props) => {
                         e.preventDefault();
                         props.onMovieAdd(movie);
                       }}
+                      disabled = {props.savedMovies.filter((item) => item.id === movie.id).length > 0 ? true: false }
                     >
                       <AddIcon /> Add movie
                     </Button>

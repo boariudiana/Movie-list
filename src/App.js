@@ -11,7 +11,7 @@ import { Fragment } from "react";
 import PopularMovies from "./PopularMovies/PopularMovies";
 
 
-class App extends React.Component {git
+class App extends React.Component {
   constructor(props) {
     super(props);
     const movies = JSON.parse(window.localStorage.getItem("saved-movies"));
@@ -25,13 +25,8 @@ class App extends React.Component {git
       };
     }
   }
-
+  
   handleAddMovie = (movie) => {
-    const dublicateMovieCheck =
-      this.state.movies.filter((item) => item.id === movie.id).length > 0;
-    if (dublicateMovieCheck) {
-      return;
-    }
     const movies = this.state.movies;
   
     this.setState(
@@ -48,7 +43,6 @@ class App extends React.Component {git
   };
 
   handleDeleteMovie = (id) => {
-    const movies = this.state.movies;
     this.setState(
       {
         movies: this.state.movies.filter((item) => item.id !== id),
@@ -70,7 +64,7 @@ class App extends React.Component {git
         );
       }
     );
-    this.dublicateMovieCheck(movies, id);
+
   };
 
   render() {
@@ -93,7 +87,8 @@ class App extends React.Component {git
                 path="/home"
                 exact
                 render={(props) =>(<Fragment>
-                        <SearchBox onMovieAdd={this.handleAddMovie} />
+                        <SearchBox onMovieAdd={this.handleAddMovie}
+                                    savedMovies = {this.state.movies}/>
                         <PopularMovies />
                 </Fragment>)}
               />
