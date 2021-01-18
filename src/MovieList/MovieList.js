@@ -9,11 +9,12 @@ const MovieList = (props) => {
     <div className={styles.box}>
       <ul className={styles.list}>
         {props.movies.map((movie) => (
-          <Paper>
-            <li className={styles.listItem} key={movie.id}>
+          <Paper key = {movie.id}>
+            <li className={styles.listItem}  >
               <Grid container >
                 <Grid item md={4} xs={6} sm = {5} align = "left">
                   <img
+                    onClick = {() => props.onClickedMovie(movie.id)}
                     src={movie.poster_path ?`https://image.tmdb.org/t/p/w154${movie.poster_path}`:   'https://i.imgur.com/Z2MYNbj.png/large_movie_poster.png'}
                     alt={movie.title}
                     

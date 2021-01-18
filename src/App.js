@@ -11,6 +11,7 @@ import { Fragment } from "react";
 import PopularMovies from "./PopularMovies/PopularMovies";
 import Snackbar from '@material-ui/core/Snackbar';
 import { Alert } from '@material-ui/lab';
+import FullMovie from "./FullMovie/FullMovie";
 
 
 class App extends React.Component {
@@ -20,12 +21,12 @@ class App extends React.Component {
     if (movies && Array.isArray(movies)) {
       this.state = {
         movies,
-        open:false
+        open:false,
       };
     } else {
       this.state = {
         movies: [],
-        open:false
+        open:false,
       };
     }
   }
@@ -95,7 +96,7 @@ class App extends React.Component {
             <Switch>
               <Route
                   exact
-                  path="/Movie-list"
+                  path="/"
                   render={() => {
                       return (
                         <Redirect to="/home" /> 
@@ -108,6 +109,7 @@ class App extends React.Component {
                 render={(props) =>(<Fragment>
                         <SearchBox onMovieAdd={this.handleAddMovie}
                                     savedMovies = {this.state.movies}
+                                    onSelectedMovie = {this.handleSelectedMovie}
                                     />
                         <PopularMovies />
                 </Fragment>)}
@@ -121,6 +123,11 @@ class App extends React.Component {
                     onMovieDelete={this.handleDeleteMovie}
                   />
                 )}
+              />
+               <Route
+                path="/movies/:id"
+                exact
+                component = {FullMovie}
               />
             </Switch>
           </div>

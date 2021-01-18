@@ -4,6 +4,7 @@ import styles from "./SearchBox.module.css";
 import MovieList from "../MovieList/MovieList";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import {withRouter} from 'react-router-dom'
 
 
 const WhiteTextTypography = withStyles({
@@ -26,6 +27,10 @@ const SearchBox = (props) => {
     setMovies([]);
     props.onMovieAdd(movie);
   };
+
+  const handleSelectedMovie = (id) => {
+    props.history.push( '/movies/' + id );
+}
 
   return (
     <div >
@@ -61,10 +66,14 @@ const SearchBox = (props) => {
         </button>
         </div>
       </div>
-      <MovieList movies={movies} onMovieAdd={localMovieAdd} savedMovies = {props.savedMovies}/>
+      <MovieList 
+              movies={movies} 
+              onMovieAdd={localMovieAdd} 
+              savedMovies = {props.savedMovies}
+              onClickedMovie = {handleSelectedMovie}/>
 
     </div>
   );
 };
 
-export default SearchBox;
+export default withRouter(SearchBox);
