@@ -3,7 +3,7 @@ import { Button, Paper, Grid, Typography } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import styles from "./MovieList.module.css";
 
-const MovieList = (props) => {
+const MovieList = ( props) => {
  
   return (
     <div className={styles.box}>
@@ -69,5 +69,10 @@ const MovieList = (props) => {
       </ul>
     </div>
   );
+};
+
+MovieList.defaultProps = {
+  movies: [],
+  savedMovies : []
 };
 export default MovieList;

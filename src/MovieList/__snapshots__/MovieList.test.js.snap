@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieList Component renders MovieList 1`] = `ShallowWrapper {}`;
+
+exports[`MovieList Component returns an empty array when there is no data to map though 1`] = `ShallowWrapper {}`;

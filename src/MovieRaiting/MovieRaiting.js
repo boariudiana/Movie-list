@@ -15,18 +15,20 @@ class   MovieRaiting extends Component {
       }
     } else {
       this.state = {
-        rating: [{ id: 0, active: false, raited:false },
+        rating: [
+          { id: 0, active: false, raited:false },
           { id: 1, active: false, raited:false },
           { id: 2, active: false, raited:false },
           { id: 3, active: false, raited:false },
-          { id: 4, active: false, raited:false },],
+          { id: 4, active: false, raited:false },
+        ],
       }
     }
 
       
   }
 
-   handleMouseLeave = (item) => {
+   handleMouseLeave = () => {
     const items = this.state.rating.map((el, index) => {
       return Object.assign({}, { ...el }, { active: false })
     })
